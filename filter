@@ -1,0 +1,6 @@
+
+SELECT CLASSSCH.[Acad Org], CLASSSCH.[Comb Sects ID], CLASSSCH.Subject, CLASSSCH.Catalog, CLASSSCH.Section, CLASSSCH.Component, CLASSSCH.[Cap Enrl], CLASSSCH.[Tot Enrl], CLASSSCH.[Comp Units], CLASSSCH.ID, CLASSSCH.Last, CLASSSCH.[Work Load], CLASSSCH.[Job Code], CLASSSCH.[Dept Hire], 
+=IIF(ISNUMERIC(Catalog),Catalog,LEFT(Catalog,LEN(Catalog)-2)) AS Catalog_Numeric, CVAR (Catalog_Numeric) AS Catalog_Num, 
+=IIF(Catalog_Num < 700, [Tot Enrl]*[Comp Units]/15, [Tot Enrl]*[Comp Units]/12) AS FTES
+FROM CLASSSCH
+WHERE (((CLASSSCH.Component)<>"SUP"));
