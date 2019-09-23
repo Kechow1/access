@@ -1,0 +1,4 @@
+SELECT class_schedule.Term, class_schedule.Course_Name, class_schedule.Component, class_schedule.CAP_Enrl, class_schedule.Tot_Enrl, 
+IIf([GE_Courses].[GEE]<>"#N/A" Or [GE_Courses].[GELD]<>"#N/A" Or [GE_Courses].[GEUD]<>"#N/A","GE classes ",IIf([class_schedule].[catalog]>699,"Grad","Non-GE Undergrad")) AS Classification, GE_Courses.GEE, GE_Courses.GELD, GE_Courses.GEUD, class_schedule.Dept_Hire
+FROM class_schedule LEFT JOIN GE_Courses ON class_schedule.Course_Name_Term = GE_Courses.Course_Name_Term
+WHERE (((class_schedule.Component)<>"SUP") AND ((class_schedule.Class_Stat)="A"));
