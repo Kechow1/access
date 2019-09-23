@@ -1,0 +1,3 @@
+SELECT GE_Courses.Term, class_schedule.Dept_Hire, class_schedule.Course_Name, class_schedule.Tot_Enrl, class_schedule.CAP_Enrl, GE_Courses.GEE, GE_Courses.GELD, GE_Courses.GEUD
+FROM class_schedule INNER JOIN GE_Courses ON class_schedule.Course_Name_Term = GE_Courses.Course_Name_Term
+WHERE (((GE_Courses.GEE)=IIf(Forms![GE Course Search]!GEE_List<>"#N/A" Or (GE_Courses.GEE)=" ",forms![GE Course Search]!GEE_List," ")) And ((class_schedule.Class_Stat)="A")) Or (((GE_Courses.GELD)=IIf(Forms![GE Course Search]!GELD_List<>"#N/A",Forms![GE Course Search]!GELD_List," ")) And ((class_schedule.Class_Stat)="A")) Or (((GE_Courses.GEUD)=IIf(Forms![GE Course Search]!GEUD_List<>"#N/A",Forms![GE Course Search]!GEUD_List," ")) And ((class_schedule.Class_Stat)="A"));
